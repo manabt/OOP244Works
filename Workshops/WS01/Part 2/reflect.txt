@@ -1,0 +1,23 @@
+/* ------------------------------------------------------
+OOP244 NAA
+Workshop 1 part 2
+Name : Mana Babatabarsorkhi
+Student ID: 117498212
+Seneca Email: mbabatabarsorkhi@myseneca.ca
+date: 2022/01/23
+-----------------------------------------------------------*/
+
+
+ By completing this workshop, I was able to make use of the module concept that
+ we learnt and implement it in the program, so I created a separate module and
+ put the related functions in there. This way instead of putting all the codes
+ in one file which makes it hard to review and debug later, everything will be
+ more organized and easier to find. Another concept I learnt was using the
+ safeguard technique for the header files to avoid duplication and the use
+ of namespace and putting all the codes inside them. The second part of the
+ workshop was about reading data from a text file and getting keywords from
+ user to search for the related data and displaying it to the end user. Which
+ I used the cStrTools module provided by the professor which would function
+ like a c String library and I used the strcmp and toLowercaseAndCopy and strStr
+ function which would return the address of the match found, and then we can
+ display it to the user using it.
