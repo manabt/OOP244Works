@@ -1,10 +1,10 @@
 /* ------------------------------------------------------
 OOP244 NAA
-Workshop 1 part 2
+Workshop 2 part 2
 Name : Mana Babatabarsorkhi
 Student ID: 117498212
 Seneca Email: mbabatabarsorkhi@myseneca.ca
-date: 2022/01/29
+date: 2022/01/31
 -----------------------------------------------------------*/
 // the cStrTools module code is compeletly provided by my professor Fardad Soleimanloo
 #ifndef NAMESPACE_CSTRTOOLS_H 

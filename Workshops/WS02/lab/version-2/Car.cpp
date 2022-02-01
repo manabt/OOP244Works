@@ -14,10 +14,9 @@ date: 2022/01/29
 using namespace std;
 
 namespace sdds {
-	
-	const int MAX_CSTRING = 60 + 1;
+
 	Car* cars = nullptr;
-	int allocationSize, numCars, carArrSize;
+	int AllocationSize, numCars, carArraySize;
 
 	void VBPLE_Title() {
 		cout << "Vehicle Border Passing Log Entry\n";
@@ -28,9 +27,10 @@ namespace sdds {
 	}
 
 	void initialize(int allocSize) {
+
 		numCars = 0;
-		carArrSize = allocationSize = allocSize;
-		cars = new Car[allocationSize];
+		AllocationSize = carArraySize = allocSize;
+		cars = new Car[AllocationSize];
 	}
 
 	void deallocate(Car& C) {
@@ -39,53 +39,59 @@ namespace sdds {
 	}
 
 	bool read(Car& C) {
+
 		bool done = false;
 		char makeAndModel[MAX_CSTRING];
-		char time[4 + 1];
+		char time[4];
 
 		read(makeAndModel, MAX_CSTRING, ',');
+
 		if (strCmp(makeAndModel, "X") != 0)
 		{
-			done = true;
 			int length = strLen(makeAndModel) + 1;
 			C.makeAndModel = new char[length];
 			strCpy(C.makeAndModel, makeAndModel);
-			read(C.licensePlate, MAX_CHAR, ',');
-			read(time, 4 + 1);
+			done = true;
+
+			read(C.licencePlate, MAX_CHAR, ',');
+
+			read(time, 4);
 			C.time = atoi(time);
 		}
+
 		return done;
 	}
 
 	void print(const Car& C) {
-		cout << C.time << ": " << C.makeAndModel << "," << C.licensePlate << endl;
+
+		cout << C.time << ": " << C.makeAndModel << "," << C.licencePlate << endl;
 	}
 
 	void record(const Car& C) {
 
-		if (numCars == carArrSize)
+		if (numCars == carArraySize)
 		{
-			Car* temp = new Car[carArrSize + allocationSize];
-			for (int i = 0; i < carArrSize; i++)
+			Car* temp = new Car[carArraySize + AllocationSize];
+			for (int j = 0; j < carArraySize; j++)
 			{
-				strCpy(temp[i].licensePlate, cars[i].licensePlate);
-				temp[i].makeAndModel = cars[i].makeAndModel;
-				temp[i].time = cars[i].time;
+				strCpy(temp[j].licencePlate, cars[j].licencePlate);
+				temp[j].makeAndModel = cars[j].makeAndModel;
+				temp[j].time = cars[j].time;
 			}
 			delete[] cars;
-			cars = nullptr;
 			cars = temp;
-			carArrSize += allocationSize;
-						
+			carArraySize += AllocationSize;
 		}
-		strCpy(cars[numCars].licensePlate, C.licensePlate);
+
+		strCpy(cars[numCars].licencePlate, C.licencePlate);
 		cars[numCars].makeAndModel = C.makeAndModel;
 		cars[numCars].time = C.time;
 		numCars += 1;
 	}
 
 	void endOfDay() {
-		for (int i = 0; i < carArrSize; i++)
+
+		for (int i = 0; i < numCars; i++)
 		{
 			print(cars[i]);
 			deallocate(cars[i]);
@@ -93,5 +99,4 @@ namespace sdds {
 		delete[] cars;
 		cars = nullptr;
 	}
-
 }

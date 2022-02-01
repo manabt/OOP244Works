@@ -26,13 +26,16 @@ int main() {
          if (strCmp(dna, "!") == 0) {
             done = true;
          }
-         else {
-            if (read(dna)) {
+         else 
+         {
+            if (read(dna)) 
+            {
                sort();
                displayMatches();
                deallocate();
             }
-            else {
+            else 
+            {
                cout << "No match found!" << endl;
             }
          }
