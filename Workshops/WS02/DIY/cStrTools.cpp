@@ -7,7 +7,7 @@ Seneca Email: mbabatabarsorkhi@myseneca.ca
 date: 2022/01/31
 -----------------------------------------------------------*/
 // the cStrTools module code is compeletly provided by my professor Fardad Soleimanloo
-#define _CRT_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include <cstdio>
 #include "cStrTools.h"

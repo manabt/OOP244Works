@@ -7,7 +7,7 @@ Seneca Email: mbabatabarsorkhi@myseneca.ca
 date: 2022/01/31
 -----------------------------------------------------------*/
 // the cStrTools module code is compeletly provided by my professor Fardad Soleimanloo
-#ifndef NAMESPACE_CSTRTOOLS_H 
+#ifndef NAMESPACE_CSTRTOOLS_H  // SDDS_.... correct this please
 #define NAMESPACE_CSTRTOOLS_H 
 
 namespace sdds {
