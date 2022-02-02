@@ -20,7 +20,7 @@ namespace sdds {
 
 	bool beginSearch(const char* filename);
 	bool read(const char* subDNA);
-	int compare(const void* dna1, const void* dna2);
+	//int compare(const void* dna1, const void* dna2);
 	void sort();
 	void displayMatches();
 	void deallocate();

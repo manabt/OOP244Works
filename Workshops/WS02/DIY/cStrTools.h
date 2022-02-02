@@ -7,11 +7,10 @@ Seneca Email: mbabatabarsorkhi@myseneca.ca
 date: 2022/01/31
 -----------------------------------------------------------*/
 // the cStrTools module code is compeletly provided by my professor Fardad Soleimanloo
-#ifndef NAMESPACE_CSTRTOOLS_H  // SDDS_.... correct this please
-#define NAMESPACE_CSTRTOOLS_H 
+#ifndef SDDS_CSTRTOOLS_H 
+#define SDDS_CSTRTOOLS_H 
 
 namespace sdds {
-
 
 	// returns the lower case value of a character
 	char toLower(char ch);
@@ -53,8 +52,6 @@ namespace sdds {
 	// reads a cString upto maxSize characters or upto the delimiter character,
 	// whichever comes first (skipping leading white space characters but accpting
 	// spaces in the cString)
-
 	void read(char* cString, unsigned int maxSize, char delimiter = '\n');
-
 }
 #endif
