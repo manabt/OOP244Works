@@ -10,7 +10,7 @@ Revision History
 Date          Reason
 31/01/2022    Minor fixed, use diff to see the changes
 -----------------------------------------------------------*/
-
+// The code in this file is provided by my professor to complete my workshops and assignments.
 #include <iostream>
 #include <cstring>
 #include <iomanip>

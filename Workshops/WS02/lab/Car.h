@@ -7,8 +7,8 @@ Seneca Email: mbabatabarsorkhi@myseneca.ca
 date: 2022/01/29
 -----------------------------------------------------------*/
 // All function prototypes are provided by the professor Fardad Soleimanloo
-#ifndef SDDS_CAR_H
-#define SDDS_CAR_H
+#ifndef SDDS_CAR_H_
+#define SDDS_CAR_H_
 
 namespace sdds{
 	
