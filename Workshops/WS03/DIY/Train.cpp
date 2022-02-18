@@ -1,10 +1,10 @@
 /* ------------------------------------------------------
 OOP244 NAA
-Workshop 3 part 1
+Workshop 3 part 2
 Name : Mana Babatabarsorkhi
 Student ID: 117498212
 Seneca Email: mbabatabarsorkhi@myseneca.ca
-date: 2022/02/02
+date: 2022/02/05
 -----------------------------------------------------------*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
@@ -83,9 +83,8 @@ namespace sdds {
 		return success;
 	}
 	int transfer(Train& first, Train& second) {
-		int count = 0, temp1, temp2;
+		int count = 0, temp1;
 		temp1 = first.getNumberOfPeople();
-		temp2 = second.getNumberOfPeople();
 		count = MAX_PEOPLE - temp1;
 		if (first.isSafeEmpty() || second.isSafeEmpty()) {
 			count = - 1;

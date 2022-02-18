@@ -1,10 +1,10 @@
 /* ------------------------------------------------------
 OOP244 NAA
-Workshop 3 part 1
+Workshop 3 part 2
 Name : Mana Babatabarsorkhi
 Student ID: 117498212
 Seneca Email: mbabatabarsorkhi@myseneca.ca
-date: 2022/02/02
+date: 2022/02/05
 -----------------------------------------------------------*/
 #ifndef SDDS_TRAIN_H_
 #define SDDS_TRAIN_H_

@@ -1,0 +1,23 @@
+/* ------------------------------------------------------
+OOP244 NAA
+Workshop 3 part 2
+Name : Mana Babatabarsorkhi
+Student ID: 117498212
+Seneca Email: mbabatabarsorkhi@myseneca.ca
+date: 2022/02/05
+-----------------------------------------------------------*/
+
+ This week I learned about class member functions and variables and how to
+ make them either public or private. To complete this workshop, I created
+ a class with several member variables and member functions and these member
+ functions each have direct access to other member variables and functions.
+ The members of a class are private by default, so the client cannot have
+ direct access to them, unlike the struct type members which are public by
+ default. For clients to have access to the private members of the class I
+ created public functions so they can access the private members indirectly
+ through these functions. Some of the member functions in this workshop were
+ queries which were only intended to display or validate the data, while
+ other were modifier functions, which were responsible to change and modify
+ the member variables of the class which were private, and the client could
+ not change these variables directly. I also used the cout member function
+ precision to set the decimal values to two and output the result to the screen.
