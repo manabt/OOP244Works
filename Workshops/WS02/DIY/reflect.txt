@@ -1,0 +1,21 @@
+/* ------------------------------------------------------
+OOP244 NAA
+Workshop 2 part 2
+Name : Mana Babatabarsorkhi
+Student ID: 117498212
+Seneca Email: mbabatabarsorkhi@myseneca.ca
+date: 2022/01/31
+-----------------------------------------------------------*/
+
+This week I learned the concept of dynamic memory allocation and by completing
+ this workshop I was able to implement this concept. Dynamic memory allocation
+ is useful where you are not aware of the number of input or things read from 
+a file, in these situation with dynamic memory allocation we have to allocate
+ a size to an array and then check if that size is reached or not, and if it
+ was, then we will create a temporary array with more size than the previous 
+one and copy the previous array elements into the temporary one and then you
+ will set the temporary array pointer to the previous array. But it is
+ imperative that we delete the previous array before assigning it anything 
+new to avoid memory leaks.
+I also got familiar with references which is similar to pointers but object
+ oriented and easier to use and it is known by the & symbol.
