@@ -18,6 +18,7 @@ namespace sdds {
 		char* m_lastName{};
 		void setEmpty();
 		void deAllocate();
+		bool m_short{};
 	public:
 		Name();
 		Name(const char* firstName);
@@ -33,7 +34,7 @@ namespace sdds {
 		Name& setFirst(const char* first);
 		Name& setLast(const char* last);
 		Name& setMiddle(const char* middle);
-		Name& setShort(bool state);
+		Name& setShort(bool state)const;
 		Name& operator+=(const char* add);
 		bool isEmpty(const char* name = nullptr)const;
 		std::istream& read(std::istream& istr = std::cin);
