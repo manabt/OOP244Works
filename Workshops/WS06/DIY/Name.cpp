@@ -64,17 +64,14 @@ namespace sdds {
 	// Copy constructor
 	Name::Name(const Name& toCopyFrom) {
 		m_firstName = nullptr, m_lastName = nullptr, m_middleName = nullptr;
-		if (toCopyFrom.m_middleName != nullptr && toCopyFrom.m_lastName != nullptr)
-		{
+		if (toCopyFrom.m_middleName != nullptr && toCopyFrom.m_lastName != nullptr) {
 			set(toCopyFrom.m_firstName, toCopyFrom.m_lastName, toCopyFrom.m_middleName);
 		}
-		else if (toCopyFrom.m_middleName == nullptr && toCopyFrom.m_lastName != nullptr)
-		{
+		else if (toCopyFrom.m_middleName == nullptr && toCopyFrom.m_lastName != nullptr) {
 			setFirst(toCopyFrom.m_firstName);
 			setLast(toCopyFrom.m_lastName);
 		}
-		else
-		{
+		else {
 			setFirst(toCopyFrom.m_firstName);
 		}
 
@@ -83,35 +80,29 @@ namespace sdds {
 	Name::~Name() {
 		deAllocate();
 	}
-
+	// Copy assignment
 	Name& Name::operator=(const Name& toCopyFrom) {
 		deAllocate();
 		m_firstName = nullptr, m_lastName = nullptr, m_middleName = nullptr;
-		if (toCopyFrom.m_middleName != nullptr && toCopyFrom.m_lastName != nullptr)
-		{
+		if (toCopyFrom.m_middleName != nullptr && toCopyFrom.m_lastName != nullptr) {
 			set(toCopyFrom.m_firstName, toCopyFrom.m_lastName, toCopyFrom.m_middleName);
 		}
-		else if (toCopyFrom.m_middleName == nullptr && toCopyFrom.m_lastName != nullptr)
-		{
+		else if (toCopyFrom.m_middleName == nullptr && toCopyFrom.m_lastName != nullptr) {
 			setFirst(toCopyFrom.m_firstName);
 			setLast(toCopyFrom.m_lastName);
 		}
-		else
-		{
+		else {
 			set(toCopyFrom.m_firstName);
 		}
 		return *this;
 	}
-
 	Name& Name::set(const char* first, const char* last, const char* middle) {
 		setFirst(first);
 		setLast(last);
 		setMiddle(middle);
 		return *this;
 	}
-
 	Name& Name::setFirst(const char* first) {
-
 		if (first != nullptr) {
 			delete[] m_firstName;
 			m_firstName = nullptr;
@@ -122,7 +113,6 @@ namespace sdds {
 	}
 
 	Name& Name::setLast(const char* last) {
-
 		if (last != nullptr) {
 			delete[] m_lastName;
 			m_lastName = nullptr;
@@ -131,9 +121,7 @@ namespace sdds {
 		}
 		return *this;
 	}
-
 	Name& Name::setMiddle(const char* middle) {
-
 		if (middle != nullptr) {
 			delete[] m_middleName;
 			m_middleName = nullptr;
@@ -144,11 +132,11 @@ namespace sdds {
 	}
 	Name& Name::setShort(bool state) {
 		if (state == true) {
-			string s(m_middleName);
-			string temp;
-			temp.push_back(s[0]);
-			temp += ".";
-			strcpy(m_middleName, temp.c_str());
+			char temp[3] = { m_middleName[0] };
+			temp[1] = '.';
+			delete[] m_middleName;
+			m_middleName[3];
+			strcpy(m_middleName, temp);
 		}
 		return *this;
 	}
@@ -178,14 +166,12 @@ namespace sdds {
 		}
 		return *this;
 	}
-
 	bool Name::isEmpty(const char* name) const {
 		bool state = false;
 		if (name == nullptr || strcmp(name, "") == 0 || strcmp(name, " ") == 0 || strlen(name) == 0)
 			state = true;
 		return state;
 	}
-
 	std::istream& Name::read(std::istream& istr) {
 
 		string first, last, middle, temp;
@@ -201,25 +187,23 @@ namespace sdds {
 		if (istr.peek() != '\n') {
 			istr >> temp;
 		}
-		if (!temp.empty())
+		if (!temp.empty()) {
 			setEmpty();
+		}
 		else if (last.empty() && !middle.empty()) {
 			set(first.c_str());
 			set(middle.c_str());
 		}
-		else if (!middle.empty() && !last.empty())
-		{
+		else if (!middle.empty() && !last.empty()) {
 			set(last.c_str());
 			set(first.c_str());
 			set(middle.c_str());
 		}
-		else
-		{
+		else {
 			set(first.c_str());
 		}
 		return istr;
 	}
-
 	std::ostream& Name::display(std::ostream& ostr)const {
 		if (m_firstName == nullptr) {
 			ostr << "Bad Name";
@@ -236,11 +220,9 @@ namespace sdds {
 		}
 		return ostr;
 	}
-
 	Name::operator bool() const {
 		return m_firstName != nullptr;
 	}
-
 	std::istream& operator>>(std::istream& istr, Name& RO) {
 		return RO.read(istr);
 	}
