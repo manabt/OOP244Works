@@ -33,37 +33,24 @@ namespace sdds {
 	}
 	Name::Name(const char* firstName) {
 		if (!isEmpty(firstName)) {
-			m_firstName = nullptr;
 			setFirst(firstName);
 		}
-		else {
-			setEmpty();
-		}
+
 	}
 	Name::Name(const char* firstName, const char* lastName) {
 
 		if (!isEmpty(firstName) && !isEmpty(lastName)) {
-			m_firstName = nullptr, m_lastName = nullptr;
 			setFirst(firstName);
 			setLast(lastName);
 		}
-		else {
-			setEmpty();
-		}
 	}
 	Name::Name(const char* firstName, const char* lastName, const char* middleName) {
-
 		if (!isEmpty(firstName) && !isEmpty(lastName) && !isEmpty(middleName)) {
-			m_firstName = nullptr, m_lastName = nullptr, m_middleName = nullptr;
 			set(firstName, lastName, middleName);
-		}
-		else {
-			setEmpty();
 		}
 	}
 	// Copy constructor
 	Name::Name(const Name& toCopyFrom) {
-		m_firstName = nullptr, m_lastName = nullptr, m_middleName = nullptr;
 		if (toCopyFrom.m_middleName != nullptr && toCopyFrom.m_lastName != nullptr) {
 			set(toCopyFrom.m_firstName, toCopyFrom.m_lastName, toCopyFrom.m_middleName);
 		}
@@ -74,7 +61,6 @@ namespace sdds {
 		else {
 			setFirst(toCopyFrom.m_firstName);
 		}
-
 	}
 	// Destructor
 	Name::~Name() {
@@ -105,8 +91,7 @@ namespace sdds {
 	Name& Name::setFirst(const char* first) {
 		if (first != nullptr) {
 			delete[] m_firstName;
-			m_firstName = nullptr;
-			m_firstName = new char[strlen(first + 1)];
+			m_firstName = new char[strlen(first)+1];
 			strcpy(m_firstName, first);
 		}
 		return *this;
@@ -115,8 +100,7 @@ namespace sdds {
 	Name& Name::setLast(const char* last) {
 		if (last != nullptr) {
 			delete[] m_lastName;
-			m_lastName = nullptr;
-			m_lastName = new char[strlen(last + 1)];
+			m_lastName = new char[strlen(last ) + 1];
 			strcpy(m_lastName, last);
 		}
 		return *this;
@@ -124,20 +108,13 @@ namespace sdds {
 	Name& Name::setMiddle(const char* middle) {
 		if (middle != nullptr) {
 			delete[] m_middleName;
-			m_middleName = nullptr;
-			m_middleName = new char[strlen(middle + 1)];
+			m_middleName = new char[strlen(middle ) + 1];
 			strcpy(m_middleName, middle);
 		}
 		return *this;
 	}
-	Name& Name::setShort(bool state) {
-		if (state == true) {
-			char temp[3] = { m_middleName[0] };
-			temp[1] = '.';
-			delete[] m_middleName;
-			m_middleName[3];
-			strcpy(m_middleName, temp);
-		}
+	Name& Name::setShort(bool state)const {
+		m_short = true;
 		return *this;
 	}
 	Name& Name::operator+=(const char* add) {
@@ -167,40 +144,36 @@ namespace sdds {
 		return *this;
 	}
 	bool Name::isEmpty(const char* name) const {
-		bool state = false;
-		if (name == nullptr || strcmp(name, "") == 0 || strcmp(name, " ") == 0 || strlen(name) == 0)
-			state = true;
+		bool state = true;
+		if (name != nullptr) {
+			for (int i = 0; state == true && name[i]; i++) {
+				if (name[i] != ' ') state = false;
+			}
+		}
 		return state;
 	}
 	std::istream& Name::read(std::istream& istr) {
 
-		string first, last, middle, temp;
-		setEmpty();
+		string name[3];
+		deAllocate();
 		//getline(istr, name, ' ');
-		istr >> first;
-		if (istr.peek() != '\n') {
-			istr >> middle;
+		istr >> name[0];
+		if (istr.peek() == ' ') {
+			istr >> name[1];
 		}
-		if (istr.peek() != '\n') {
-			istr >> last;
+		if (istr.peek() == ' ') {
+			istr >> name[2];
 		}
-		if (istr.peek() != '\n') {
-			istr >> temp;
-		}
-		if (!temp.empty()) {
-			setEmpty();
-		}
-		else if (last.empty() && !middle.empty()) {
-			set(first.c_str());
-			set(middle.c_str());
-		}
-		else if (!middle.empty() && !last.empty()) {
-			set(last.c_str());
-			set(first.c_str());
-			set(middle.c_str());
-		}
-		else {
-			set(first.c_str());
+		if (istr.peek() == '\n') {
+			if (name[2]...) {
+				set(first.c_str());
+				set(middle.c_str());
+			}
+			else if (!middle.empty() && !last.empty()) {
+				set(last.c_str());
+				set(first.c_str());
+				set(middle.c_str());
+			}
 		}
 		return istr;
 	}
@@ -215,8 +188,11 @@ namespace sdds {
 			ostr << m_firstName << " " << m_lastName;
 		}
 		else if (m_firstName != nullptr && m_lastName != nullptr && m_middleName != nullptr)
-		{
-			ostr << m_firstName << " " << m_middleName << " " << m_lastName;
+		{ 
+			if(m_short)
+				ostr << m_firstName << " " << m_middleName[0] << ". " << m_lastName;
+			else
+				ostr << m_firstName << " " << m_middleName << " " << m_lastName;
 		}
 		return ostr;
 	}
