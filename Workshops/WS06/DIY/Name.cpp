@@ -1,6 +1,6 @@
 /* ------------------------------------------------------
 OOP244 NAA
-Workshop 6 part 1
+Workshop 6 part 2
 Name : Mana Babatabarsorkhi
 Student ID: 117498212
 Seneca Email: mbabatabarsorkhi@myseneca.ca
@@ -82,17 +82,18 @@ namespace sdds {
 	}
 	// Copy assignment
 	Name& Name::operator=(const Name& toCopyFrom) {
-		deAllocate();
-		m_firstName = nullptr, m_lastName = nullptr, m_middleName = nullptr;
-		if (toCopyFrom.m_middleName != nullptr && toCopyFrom.m_lastName != nullptr) {
-			set(toCopyFrom.m_firstName, toCopyFrom.m_lastName, toCopyFrom.m_middleName);
-		}
-		else if (toCopyFrom.m_middleName == nullptr && toCopyFrom.m_lastName != nullptr) {
-			setFirst(toCopyFrom.m_firstName);
-			setLast(toCopyFrom.m_lastName);
-		}
-		else {
-			set(toCopyFrom.m_firstName);
+		if (this != &toCopyFrom) {
+			deAllocate();
+			if (toCopyFrom.m_middleName != nullptr && toCopyFrom.m_lastName != nullptr) {
+				set(toCopyFrom.m_firstName, toCopyFrom.m_lastName, toCopyFrom.m_middleName);
+			}
+			else if (toCopyFrom.m_middleName == nullptr && toCopyFrom.m_lastName != nullptr) {
+				setFirst(toCopyFrom.m_firstName);
+				setLast(toCopyFrom.m_lastName);
+			}
+			else {
+				set(toCopyFrom.m_firstName);
+			}
 		}
 		return *this;
 	}
