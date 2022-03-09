@@ -53,7 +53,7 @@ int main() {
    nameTester("Enter the follwing:\n> Homer Simpson\n> ");
    nameTester("Enter the follwing:\n> Homer\n> ");
    cout << N << "+= \"\": " << (N += "") << endl;
-   cout << N << "+= \"    \": " << (N += "   ") << endl;
+   cout << N << "+= \"    \": " << (N += "  ") << endl;
    cout << N << "+= Van: " << (N += "Van") << endl;
    cout << N << "+= Houten: " << (N += "Houten") << endl;
    cout << N << "+= Adams: " << (N += "Adams") << endl;
