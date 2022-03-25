@@ -1,0 +1,20 @@
+/* ------------------------------------------------------
+OOP244 NAA
+Workshop 6 part 2
+Name : Mana Babatabarsorkhi
+Student ID: 117498212
+Seneca Email: mbabatabarsorkhi@myseneca.ca
+date: 2022/03/06
+-----------------------------------------------------------*/
+ I was able to implement the extraction and insertion operator in this workshop
+ and to do so, I could’ve accomplished it by making it a friend to the class
+ object or making it a helper function which I implemented it as a helper 
+ function. A helper function does not have direct access to the private members
+ of the class, so it must use other member functions in the class that are
+ public to accomplish this task. We avoid using making a global function a
+ friend to a class because this way we go against the concept of encapsulation
+ which is the whole point of object-oriented programming. In this workshop I 
+ also applied the rule of three, because the Name class had resources outside
+ of the class scope and all the assignments needed to be take cared manually
+ and memory allocated at the run time needed to be deallocated to avoid any
+ memory leaks.
