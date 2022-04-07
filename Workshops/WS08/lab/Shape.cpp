@@ -11,7 +11,7 @@ date : 2022 / 03 / 22
 using namespace std;
 
 namespace sdds {
-	sdds::Shape::~Shape() {}
+	Shape::~Shape() {}
 	std::ostream& operator<<(std::ostream& ostr, const Shape& shape) {
 		shape.draw(ostr);
 		return ostr;

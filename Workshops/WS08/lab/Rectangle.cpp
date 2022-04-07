@@ -36,7 +36,9 @@ namespace sdds {
 		LblShape::getSpecs(istr);
 		istr >> m_width;
 		if (istr.peek() == ',') {
-			istr.ignore(1000, ',');
+			//istr.ignore(1000, ',');
+			//istr.get();
+			istr.ignore();
 		}
 		istr >> m_height;
 		istr.ignore(1000, '\n');
