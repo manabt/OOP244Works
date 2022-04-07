@@ -4,7 +4,7 @@ Final Project milestone 4
 Name : Mana Babatabarsorkhi
 Student ID: 117498212
 Seneca Email: mbabatabarsorkhi@myseneca.ca
-date: 2022/04/04
+date: 2022/04/07
 -----------------------------------------------------------*/
 /*----------------------------------------------------------
 I have done all the coding by myself and only copied the code
@@ -23,17 +23,18 @@ namespace sdds {
 		operator=(source);
 	}
 	Perishable& Perishable::operator=(const Perishable& source){
-		Item::operator=(source);
+		delete[] m_handling;
+		m_handling = nullptr;
 		if (this != &source) {
-			delete[] m_handling;
 			ut.alocpy(m_handling, source.m_handling);
 			m_expiry = source.m_expiry;
-			
+			Item::operator=(source);
 		}
 		return *this;
 	}
 	Perishable::~Perishable() {
 		delete[] m_handling;
+		m_handling = nullptr;
 	}
 	const Date& Perishable::expiry() const {
 		return m_expiry;
@@ -61,9 +62,10 @@ namespace sdds {
 		string str;
 		Item::load(ifstr);
 		//ifstr.ignore(1000, '\t');
-		delete[] m_handling;
 		getline(ifstr, str, '\t');
-		if (ifstr) ut.alocpy(m_handling, str.c_str());
+		delete[] m_handling;
+		m_handling = nullptr;
+		if (ifstr && !str.empty()) ut.alocpy(m_handling, str.c_str());
 		ifstr >> m_expiry;
 		ifstr.ignore(1000, '\n');
 		if (ifstr.fail()) {
@@ -76,22 +78,21 @@ namespace sdds {
 		if (m_state) {
 			if (Item::linear()) {
 				Item::display(ostr);
-				if (m_handling != nullptr && m_handling[0] != ' ') { //not null and not empty 
+				if (m_handling && m_handling[0] != '\0') { //not null and not empty 
 					ostr << '*';
 				}
 				else {
 					ostr << ' ';
 				}
-				ostr << m_expiry; // formatted way
+				ostr << m_expiry;
 			}
 			else {
 				Date temp = m_expiry;
 				temp.formatted(true);
-				ostr << "Persihable ";
+				ostr << "Perishable ";
 				Item::display(ostr);
 				ostr << endl;
 				ostr << "Expiry date: " << temp << endl; // print expiray formatted
-
 				if (m_handling) {
 					ostr << "Handling Instructions: " << m_handling << endl;
 				}

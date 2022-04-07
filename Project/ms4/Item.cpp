@@ -4,7 +4,7 @@ Final Project milestone 4
 Name : Mana Babatabarsorkhi
 Student ID: 117498212
 Seneca Email: mbabatabarsorkhi@myseneca.ca
-date: 2022/04/04
+date: 2022/04/07
 -----------------------------------------------------------*/
 /*----------------------------------------------------------
 I have done all the coding by myself and only copied the code
@@ -28,20 +28,25 @@ namespace sdds {
 	}
 	Item& Item::operator=(const Item& source) {
 		if (this != &source) {
-			delete[] m_description;
-			ut.alocpy(m_description, source.m_description);
-			m_price = source.m_price;
-			m_qty = source.m_qty;
-			m_qtyNeeded = source.m_qtyNeeded;
-			m_linear = source.m_linear;
-			m_state = source.m_state;
-			m_sku = source.m_sku;
+			if (source.m_sku != 0) {
+				ut.alocpy(m_description, source.m_description);
+				m_price = source.m_price;
+				m_qty = source.m_qty;
+				m_qtyNeeded = source.m_qtyNeeded;
+				m_linear = source.m_linear;
+				m_state = source.m_state;
+				m_sku = source.m_sku;
+			}
+			else {
+				m_state.set("Empty");
+			}
 		}
 		return *this;
 	}
 	Item::~Item() {
 		clear();
 		delete[] m_description;
+		m_description = nullptr;
 	}
 	int Item::qtyNeeded() const {
 		return m_qtyNeeded;
@@ -103,7 +108,6 @@ namespace sdds {
 	}
 	std::ifstream& Item::load(std::ifstream& ifstr) {
 		string str;
-		char c;
 		clear();
 		ifstr >> m_sku;
 		ifstr.ignore(1000, '\t');
@@ -116,8 +120,6 @@ namespace sdds {
 		ifstr.ignore(1000, '\t');
 		ifstr >> m_price;
 		ifstr.ignore();
-		//ifstr.get(c);
-		//ifstr.ignore(1000, '\t');
 		if (!ifstr) {
 			m_state.set("Input file stream read failed!");
 		}
@@ -177,7 +179,6 @@ namespace sdds {
 		cout << "Description: ";
 		getline(istr, str, '\n');
 		if (istr) ut.alocpy(m_description, str.c_str());
-		//istr.ignore(1000, '\n');
 		cout << "Quantity Needed: ";
 		m_qtyNeeded = ut.getint(1, 9999);
 		cout << "Quantity On Hand: ";
